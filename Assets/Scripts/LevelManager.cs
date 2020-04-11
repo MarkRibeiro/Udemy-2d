@@ -46,6 +46,8 @@ public class LevelManager : MonoBehaviour
     public AudioSource gameOverMusic;
     public AudioSource endLevelMusic;
 
+    public bool respawnCoActive;
+
 
 
     // Start is called before the first frame update
@@ -113,11 +115,15 @@ public class LevelManager : MonoBehaviour
     }
 
     public IEnumerator RespawnCo(){
+        respawnCoActive = true;
+
     	thePlayer.gameObject.SetActive(false);
 
     	Instantiate(deathSplosion, thePlayer.transform.position, thePlayer.transform.rotation);
 
     	yield return new WaitForSeconds(waitToRespawn);
+
+        respawnCoActive = false;
 
         healthCount = maxHealth;
         respawning = false;

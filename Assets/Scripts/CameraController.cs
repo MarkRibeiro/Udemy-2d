@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour {
 
     public bool followTarget;
 
+    public GameObject levelSelectCheck;
+
     // Start is called before the first frame update
     void Start() {
         followTarget = true;
@@ -20,6 +22,9 @@ public class CameraController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(levelSelectCheck != null){
+            followTarget = false;
+        }
         if (followTarget)
         {
             targetPosition = new Vector3(target.transform.position.x, transform.position.y, transform.position.z);
